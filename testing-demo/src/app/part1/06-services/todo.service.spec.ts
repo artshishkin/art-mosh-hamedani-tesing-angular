@@ -10,7 +10,7 @@ describe('TodoService', () => {
   let todos: any;
 
   beforeEach(() => {
-    http = new HttpClient(null);
+    http = new HttpClient(null as any);
     service = new TodoService(http);
     todos = [1, 2, 3];
   });
