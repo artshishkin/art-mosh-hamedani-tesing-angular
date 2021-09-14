@@ -42,5 +42,23 @@ describe('Voter2Component', () => {
     expect(debugElement.classes['highlighted']).toBeTruthy();
   });
 
+  it('should increase total votes if I click the upvote button (through HTMLElement)', () => {
+
+    let debugElement = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+    let el: HTMLElement = debugElement.nativeElement;
+
+    el.click();
+
+    expect(component.totalVotes).toBe(1);
+  });
+
+  it('should increase total votes if I click the upvote button (through DebugElement)', () => {
+
+    let debugElement = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+
+    debugElement.triggerEventHandler('click', null);
+
+    expect(component.totalVotes).toBe(1);
+  });
 
 });
