@@ -18,99 +18,106 @@ describe('VoterComponent', () => {
     expect(totalVotes).toBe(101);
   });
 
+  describe('When I upvote, ', () => {
+    it('should set myVote to 0 from -1 when upVoting', () => {
 
-  it('should set myVote to 0 from -1 when upVoting', () => {
+      voterComponent.myVote = -1;
 
-    voterComponent.myVote = -1;
+      voterComponent.upVote();
 
-    voterComponent.upVote();
+      expect(voterComponent.totalVotes).toBe(0);
+    });
 
-    expect(voterComponent.myVote).toBe(0);
+    it('should set myVote to 1 from 0 when upVoting', () => {
+
+      voterComponent.myVote = 0;
+
+      voterComponent.upVote();
+
+      expect(voterComponent.totalVotes).toBe(1);
+    });
+
+    it('should not set myVote larger then 1', () => {
+
+      voterComponent.myVote = 1;
+
+      voterComponent.upVote();
+
+      expect(voterComponent.totalVotes).toBe(1);
+    });
+
+    it('should emit event when myVote changes by upVoting', () => {
+      let voteEvent: any;
+      voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
+      voterComponent.myVote = 0;
+
+      voterComponent.upVote();
+
+      expect(voteEvent).toEqual({myVote: 1});
+    });
+
+    it('should NOT emit event when myVote DOES NOT change by upVoting', () => {
+      let voteEvent: any;
+      voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
+      voterComponent.myVote = 1;
+
+      voterComponent.upVote();
+
+      expect(voteEvent).toBeUndefined();
+    });
+
   });
 
-  it('should set myVote to 1 from 0 when upVoting', () => {
 
-    voterComponent.myVote = 0;
+  describe('When I downvote, ', () => {
+    it('should set myVote to 0 from 1 when downVoting', () => {
 
-    voterComponent.upVote();
+      voterComponent.myVote = 1;
 
-    expect(voterComponent.myVote).toBe(1);
-  });
+      voterComponent.downVote();
 
-  it('should not set myVote larger then 1', () => {
+      expect(voterComponent.totalVotes).toBe(0);
+    });
 
-    voterComponent.myVote = 1;
+    it('should set myVote to -1 from 0 when downVoting', () => {
 
-    voterComponent.upVote();
+      voterComponent.myVote = 0;
 
-    expect(voterComponent.myVote).toBe(1);
-  });
+      voterComponent.downVote();
 
-  it('should set myVote to 0 from 1 when downVoting', () => {
+      expect(voterComponent.totalVotes).toBe(-1);
+    });
 
-    voterComponent.myVote = 1;
+    it('should not set myVote smaller then -1 when downVoting', () => {
 
-    voterComponent.downVote();
+      voterComponent.myVote = -1;
 
-    expect(voterComponent.myVote).toBe(0);
-  });
+      voterComponent.downVote();
 
-  it('should set myVote to -1 from 0 when downVoting', () => {
+      expect(voterComponent.totalVotes).toBe(-1);
+    });
 
-    voterComponent.myVote = 0;
 
-    voterComponent.downVote();
+    it('should emit event when myVote changes by downVoting', () => {
+      let voteEvent: any;
+      voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
+      voterComponent.myVote = 1;
 
-    expect(voterComponent.myVote).toBe(-1);
-  });
+      voterComponent.downVote();
 
-  it('should not set myVote smaller then -1 when downVoting', () => {
+      expect(voteEvent).toEqual({myVote: 0});
+    });
 
-    voterComponent.myVote = -1;
+    it('should NOT emit event when myVote DOES NOT change by downVoting', () => {
+      let voteEvent: any;
+      voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
+      voterComponent.myVote = -1;
 
-    voterComponent.downVote();
+      voterComponent.downVote();
 
-    expect(voterComponent.myVote).toBe(-1);
-  });
+      expect(voteEvent).toBeUndefined();
+    });
 
-  it('should emit event when myVote changes by upVoting', () => {
-    let voteEvent: any;
-    voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
-    voterComponent.myVote = 0;
-
-    voterComponent.upVote();
-
-    expect(voteEvent).toEqual({myVote: 1});
-  });
-
-  it('should NOT emit event when myVote DOES NOT change by upVoting', () => {
-    let voteEvent: any;
-    voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
-    voterComponent.myVote = 1;
-
-    voterComponent.upVote();
-
-    expect(voteEvent).toBeUndefined();
-  });
-
-  it('should emit event when myVote changes by downVoting', () => {
-    let voteEvent: any;
-    voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
-    voterComponent.myVote = 1;
-
-    voterComponent.downVote();
-
-    expect(voteEvent).toEqual({myVote: 0});
-  });
-
-  it('should NOT emit event when myVote DOES NOT change by downVoting', () => {
-    let voteEvent: any;
-    voterComponent.myVoteChanged.subscribe(event => voteEvent = event)
-    voterComponent.myVote = -1;
-
-    voterComponent.downVote();
-
-    expect(voteEvent).toBeUndefined();
   });
 
 });
