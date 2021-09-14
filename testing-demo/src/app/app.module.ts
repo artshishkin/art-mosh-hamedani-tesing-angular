@@ -7,6 +7,7 @@ import {TextSummaryPipe} from "./exercises/1- text-summary-pipe/text-summary.pip
 import {LikeComponent} from "./exercises/2- like-component/like.component";
 import {VoterComponent} from "./exercises/3- voter-component/voter.component";
 import {Voter2Component} from "./part2/1-voter/voter2.component";
+import {GreeterComponent} from './part2/greeter/greeter.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {Voter2Component} from "./part2/1-voter/voter2.component";
     TypedTextSummaryPipe,
     LikeComponent,
     VoterComponent,
-    Voter2Component
+    Voter2Component,
+    GreeterComponent
   ],
   imports: [
     BrowserModule

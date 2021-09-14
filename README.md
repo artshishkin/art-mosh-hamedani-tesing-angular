@@ -13,4 +13,11 @@ Testing Angular 4 (previously Angular 2) Apps with Jasmine - Tutorial from Mosh 
 -  to disable entire suite
     -  modify `describe(...` to `xdescribe(...`    
 
+####  Section 3: Integration Testing
+
+#####  17. Generating the Setup Code
+
+-  `ng generate component greeter`
+-  simplify test by reducing async block 
+
     
