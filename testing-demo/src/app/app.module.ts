@@ -8,6 +8,7 @@ import {LikeComponent} from "./exercises/2- like-component/like.component";
 import {VoterComponent} from "./exercises/3- voter-component/voter.component";
 import {Voter2Component} from "./part2/1-voter/voter2.component";
 import {GreeterComponent} from './part2/greeter/greeter.component';
+import {Todos2Component} from "./part2/2-todos/todos2.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {GreeterComponent} from './part2/greeter/greeter.component';
     LikeComponent,
     VoterComponent,
     Voter2Component,
-    GreeterComponent
+    GreeterComponent,
+    Todos2Component
   ],
   imports: [
     BrowserModule
