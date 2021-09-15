@@ -9,6 +9,7 @@ import {VoterComponent} from "./exercises/3- voter-component/voter.component";
 import {Voter2Component} from "./part2/1-voter/voter2.component";
 import {GreeterComponent} from './part2/greeter/greeter.component';
 import {Todos2Component} from "./part2/2-todos/todos2.component";
+import {UserDetailsComponent} from "./part2/3-user-details/user-details.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {Todos2Component} from "./part2/2-todos/todos2.component";
     VoterComponent,
     Voter2Component,
     GreeterComponent,
-    Todos2Component
+    Todos2Component,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule
