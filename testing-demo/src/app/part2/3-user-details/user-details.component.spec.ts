@@ -2,14 +2,29 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {UserDetailsComponent} from './user-details.component';
+import {ActivatedRoute, Router} from "@angular/router";
+import {from, Observable} from "rxjs";
 
-xdescribe('UserDetailsComponent', () => {
+class RouterStub {
+  navigate(params: any) {
+  }
+}
+
+class ActivatedRouteStub {
+  params: Observable<any> = from([true]);
+}
+
+describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
   let fixture: ComponentFixture<UserDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailsComponent]
+      declarations: [UserDetailsComponent],
+      providers: [
+        {provide: Router, useClass: RouterStub},
+        {provide: ActivatedRoute, useClass: ActivatedRouteStub}
+      ]
     })
       .compileComponents();
   }));
