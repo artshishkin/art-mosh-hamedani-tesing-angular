@@ -4,6 +4,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {Todos2Component} from './todos2.component';
 import {TodoService} from "./todo.service";
 import {HttpClientModule} from "@angular/common/http";
+import {from} from "rxjs";
 
 //NOTE: I've deliberately excluded this suite from running
 // because the test will fail. This is because we have not
@@ -28,10 +29,19 @@ describe('Todos2Component', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(Todos2Component);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load todos from the server', () => {
+
+    let todoService = TestBed.inject(TodoService);
+
+    spyOn(todoService, "getTodos").and.returnValue(from([[1, 2, 3]]));
+    fixture.detectChanges();
+
+    expect(component.todos).toEqual([1, 2, 3]);
   });
 });
