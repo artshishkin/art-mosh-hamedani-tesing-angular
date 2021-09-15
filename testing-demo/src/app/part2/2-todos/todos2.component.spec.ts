@@ -2,6 +2,8 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {Todos2Component} from './todos2.component';
+import {TodoService} from "./todo.service";
+import {HttpClientModule} from "@angular/common/http";
 
 //NOTE: I've deliberately excluded this suite from running
 // because the test will fail. This is because we have not
@@ -10,13 +12,15 @@ import {Todos2Component} from './todos2.component';
 // When you get to Lecture 6 (Providing Dependencies), be sure
 // to remove "x" from "xdescribe" below.
 
-xdescribe('Todos2Component', () => {
+describe('Todos2Component', () => {
   let component: Todos2Component;
   let fixture: ComponentFixture<Todos2Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [Todos2Component]
+      imports: [HttpClientModule],
+      declarations: [Todos2Component],
+      providers: [TodoService]
     })
       .compileComponents();
   }));
