@@ -10,6 +10,12 @@ import {Voter2Component} from "./part2/1-voter/voter2.component";
 import {GreeterComponent} from './part2/greeter/greeter.component';
 import {Todos2Component} from "./part2/2-todos/todos2.component";
 import {UserDetailsComponent} from "./part2/3-user-details/user-details.component";
+import {HomeComponent} from "./part2/home/home.component";
+import {UsersComponent} from "./part2/users/users.component";
+import {routes} from "./app.routes";
+import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,12 +27,18 @@ import {UserDetailsComponent} from "./part2/3-user-details/user-details.componen
     Voter2Component,
     GreeterComponent,
     Todos2Component,
-    UserDetailsComponent
+    UserDetailsComponent,
+    HomeComponent,
+    UsersComponent
   ],
   imports: [
-    BrowserModule
+    RouterModule.forRoot(routes),
+    BrowserModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
