@@ -37,4 +37,12 @@ describe('UserDetailsComponent using jasmine.createSpyObj', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should redirect the customer to the users page after saving', () => {
+
+    component.save();
+
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['users']);
+  });
+
 });
