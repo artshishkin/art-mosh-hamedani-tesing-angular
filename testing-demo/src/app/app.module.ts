@@ -16,6 +16,7 @@ import {routes} from "./app.routes";
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {NavComponent} from './part2/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {FormsModule} from "@angular/forms";
     Todos2Component,
     UserDetailsComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    NavComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

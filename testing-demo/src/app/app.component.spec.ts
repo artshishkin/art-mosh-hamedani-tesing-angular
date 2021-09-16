@@ -3,13 +3,15 @@ import {AppComponent} from './app.component';
 import {By} from "@angular/platform-browser";
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
+import {NavComponent} from "./part2/nav/nav.component";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes([])],
       declarations: [
-        AppComponent
+        AppComponent,
+        NavComponent
       ],
     }).compileComponents();
   });
