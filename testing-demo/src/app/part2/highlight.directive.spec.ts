@@ -2,6 +2,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {HighlightDirective} from './highlight.directive';
 import {Component} from '@angular/core';
+import {By} from "@angular/platform-browser";
 
 @Component({
     template: `
@@ -26,7 +27,23 @@ describe('HighlightDirective', () => {
         fixture.detectChanges();
     });
 
-    it('', () => {
+    it('should highlight the first element with cyan', () => {
+
+      let firstParagraph = fixture.debugElement.queryAll(By.css('p'))[0];
+
+      expect(firstParagraph.nativeElement.style.backgroundColor).toBe('cyan');
 
     });
+
+    it('should highlight the second element with the default color', () => {
+
+      let secondParagraph = fixture.debugElement.queryAll(By.css('p'))[1];
+
+      let highlightDirective = secondParagraph.injector.get(HighlightDirective);
+      let defaultColor = highlightDirective.defaultColor;
+
+      expect(secondParagraph.nativeElement.style.backgroundColor).toBe(defaultColor);
+
+    });
+
 });
