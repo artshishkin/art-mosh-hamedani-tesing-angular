@@ -14,7 +14,12 @@ export class Todos2Component implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getTodos().subscribe(t => this.todos = t);
+    // this.service.getTodos().subscribe(t => this.todos = t);
+    this.service.getTodosPromise().then(t => {
+      console.log('`then` was called');
+      this.todos = t;
+
+    });
   }
 
   add() {

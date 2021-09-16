@@ -35,7 +35,7 @@ describe('Todos2Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load todos from the server', () => {
+  xit('should load todos from the server', () => {
 
     let todoService = TestBed.inject(TodoService);
 
@@ -44,4 +44,17 @@ describe('Todos2Component', () => {
 
     expect(component.todos).toEqual([1, 2, 3]);
   });
+
+  it('should load todos from the server', () => {
+
+    let todoService = TestBed.inject(TodoService);
+
+    spyOn(todoService, "getTodosPromise").and.returnValue(Promise.resolve([1, 2, 3]));
+    fixture.detectChanges();
+
+    expect(component.todos).toEqual([1, 2, 3]);
+    console.log('`expect` was called ');
+  });
+
+
 });
