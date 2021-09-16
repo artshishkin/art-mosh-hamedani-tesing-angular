@@ -45,16 +45,18 @@ describe('Todos2Component', () => {
     expect(component.todos).toEqual([1, 2, 3]);
   });
 
-  it('should load todos from the server', () => {
+  it('should load todos from the server', async(() => {
 
     let todoService = TestBed.inject(TodoService);
 
     spyOn(todoService, "getTodosPromise").and.returnValue(Promise.resolve([1, 2, 3]));
     fixture.detectChanges();
 
-    expect(component.todos).toEqual([1, 2, 3]);
-    console.log('`expect` was called ');
-  });
+    fixture.whenStable().then(() => {
+      expect(component.todos).toEqual([1, 2, 3]);
+      console.log('`expect` was called ');
+    });
+  }));
 
 
 });
