@@ -1,9 +1,13 @@
 import {TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
+import {By} from "@angular/platform-browser";
+import {RouterOutlet} from "@angular/router";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [RouterTestingModule.withRoutes([])],
       declarations: [
         AppComponent
       ],
@@ -28,4 +32,12 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('testing-demo app is running!');
   });
+
+  it('should have a router outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+
+    let debugElement = fixture.debugElement.query(By.directive(RouterOutlet));
+    expect(debugElement).not.toBeNull();
+  });
+
 });
