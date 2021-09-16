@@ -17,6 +17,7 @@ import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {NavComponent} from './part2/nav/nav.component';
+import {HighlightDirective} from "./part2/highlight.directive";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {NavComponent} from './part2/nav/nav.component';
     UserDetailsComponent,
     HomeComponent,
     UsersComponent,
-    NavComponent
+    NavComponent,
+    HighlightDirective
   ],
   imports: [
     RouterModule.forRoot(routes),
