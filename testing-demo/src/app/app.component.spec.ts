@@ -3,16 +3,16 @@ import {AppComponent} from './app.component';
 import {By} from "@angular/platform-browser";
 import {RouterOutlet} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
-import {NavComponent} from "./part2/nav/nav.component";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule.withRoutes([])],
       declarations: [
-        AppComponent,
-        NavComponent
+        AppComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
